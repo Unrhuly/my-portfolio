@@ -1,35 +1,38 @@
 import './App.css'
-import Projects from './project.jsx'
-
-const skills = ['HTML & CSS', 'JavaScript', 'React', 'Git & GitHub', 'Responsive UI']
+import { NavLink, Route, Routes } from 'react-router-dom'
+import Home from './pages/Home.jsx'
+import MyPortfolio from './pages/MyPortfolio.jsx'
+import About from './pages/About.jsx'
+import Skills from './pages/Skills.jsx'
+import Contact from './pages/Contact.jsx'
+import ProjectsPage from './pages/ProjectsPage.jsx'
 
 function App() {
   return (
-    <main>
+    <>
       <nav className="navbar" aria-label="Main navigation">
-        <a className="brand" href="#home" aria-label="Addor-Nyuienyo Kofi home"><span className="brand-mark">ANK</span><span>Addor-Nyuienyo Kofi</span></a>
-        <div className="nav-links"><a className="active" href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
-        <a className="contact-button" href="#contact">Get in touch <span aria-hidden="true">→</span></a>
-      </nav>
-      <section className="hero-section" id="home">
-        <div className="hero-copy">
-          <p className="status"><span className="status-dot" aria-hidden="true" /> Available for internships &amp; junior roles</p>
-          <p className="hello">Hello, I&apos;m <span>Addor-Nyuienyo Kofi</span></p>
-          <h1>Front-End <span className="name-accent">Developer<span className="name-period">.</span></span></h1>
-          <p className="hero-intro">I design and build clean, responsive web experiences. I&apos;m looking for a team where I can contribute, learn quickly, and grow.</p>
-          <div className="hero-actions">
-            <a className="primary-button" href="#projects">View my work <span aria-hidden="true">↗</span></a>
-            <a className="secondary-button" href="#contact">Let&apos;s connect</a>
-          </div>
+        <NavLink className="brand" to="/" aria-label="Addor-Nyuienyo Kofi home">
+          <span className="brand-mark">ANK</span>
+          <span>KOFI</span>
+        </NavLink>
+        <div className="nav-links">
+          <NavLink to="/" end>Home</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/skills">Skills</NavLink>
+          <NavLink to="/projects">Projects</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
         </div>
-      </section>
-      <section className="info-grid">
-        <article id="about"><span className="card-icon violet">◎</span><p className="card-label">FOR RECRUITERS</p><h2>A curious, reliable teammate.</h2><p>I&apos;m developing strong web fundamentals and looking for an entry-level role where I can contribute, learn quickly, and grow with a supportive team.</p></article>
-        <article id="skills"><span className="card-icon pink">⌘</span><p className="card-label">SKILLS</p><h2>My growing toolkit.</h2><div className="skill-list">{skills.map((skill) => <span key={skill}>{skill}</span>)}</div></article>
-        <article><span className="card-icon orange">✦</span><p className="card-label">WHAT I BRING</p><h2>Thoughtful foundations.</h2><ul><li>Responsive interface building</li><li>Clear, maintainable code</li><li>A genuine learning mindset</li></ul></article>
-        <article className="quote-card"><span className="card-icon yellow">“</span><p className="card-label">CURRENTLY</p><blockquote>Building locally, learning daily, and preparing for my first professional opportunity.</blockquote></article>
-      </section>
-      <Projects />
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/skills" element={<Skills />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/projects/my-portfolio" element={<MyPortfolio />} />
+      </Routes>
+
       <footer className="site-footer">
         <section className="footer-cta" id="contact" aria-labelledby="footer-title">
           <p className="footer-eyebrow">HAVE A PROJECT IN MIND?</p>
@@ -66,7 +69,7 @@ function App() {
           <small>© {new Date().getFullYear()} Addor-Nyuienyo Kofi. Built with curiosity.</small>
         </div>
       </footer>
-    </main>
+    </>
   )
 }
 

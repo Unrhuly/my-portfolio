@@ -6,8 +6,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2d1e40;
-  background: #f7f3ff;
+  color: var(--text-primary);
+  background: var(--page-bg);
 }
 
 * {
@@ -22,7 +22,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #f7f3ff;
+  background: var(--page-bg);
 }
 
 #root {
@@ -53,4 +53,3 @@ h3,
 p {
   margin: 0;
 }
-
